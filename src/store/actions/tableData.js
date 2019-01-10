@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes';
 import axios from 'axios';
+import {connect} from 'react-redux';
 
 export const setTableData = (data)=>{
     return {
@@ -14,9 +15,9 @@ export const fetchRepoFailed = ()=>{
     }
 }
 
-export const initTableData = ()=>{
+export const initTableData = (searchedWord)=>{
     return dispatch=>{
-        axios.get('https://api.github.com/search/repositories?q=rea')
+        axios.get('https://api.github.com/search/repositories?q=' + searchedWord)
         .then(respons=>{
             dispatch(setTableData(respons.data.items))
         })

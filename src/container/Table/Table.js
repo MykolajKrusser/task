@@ -56,7 +56,9 @@ class Table extends Component {
 const mapStateToProps = state =>{
     return {
         tableData: state.tableData.tableData,
-        loader: state.tableData.loader
+        loader: state.tableData.loader,
+        searchedWord: state.tableData.searchedWord
+
     };
 };
 const mapDispatchToProps = dispatch =>{

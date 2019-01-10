@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import * as actions from './store/actions/actionTypes';
+import * as action from './store/actions/index';
 
 import Wrap from './hoc/Wrap/Wrap';
 import Header from './components/Header/Header';
@@ -9,9 +10,14 @@ import Input from './components/UI/Input/Input';
 import Table from './container/Table/Table';
 
 class App extends Component {
+
+  searchHandler = (event)=>{
+    this.props.onInitTableData(this.props.value)
+  }
   render() {
 
     console.log(this.props.value)
+
     return (
       <Wrap>
         <Header/>
@@ -24,6 +30,7 @@ class App extends Component {
             onChange={this.props.onChangeSearchHandler}
             placeholder="Search..."
           />
+          <button onClick={this.searchHandler}>Search</button>
           <Table/>
         </Layout>
       </Wrap>
@@ -39,7 +46,8 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch =>{
   return{
-    onChangeSearchHandler:  (event)=> dispatch({type: actions.SET_SEARCHED_WORD, event: event})
+    onChangeSearchHandler:  (event)=> dispatch({type: actions.SET_SEARCHED_WORD, event: event}),
+    onInitTableData: (searchedWord)=> dispatch(action.initTableData(searchedWord))
   };
 };
 

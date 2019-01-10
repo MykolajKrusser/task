@@ -18,7 +18,7 @@ export const initTableData = ()=>{
     return dispatch=>{
         axios.get('https://api.github.com/search/repositories?q=react-native-fbads')
         .then(respons=>{
-            dispatch(setTableData(respons))
+            dispatch(setTableData(respons.data.items))
         })
         .catch(error=>{
             dispatch(fetchRepoFailed())

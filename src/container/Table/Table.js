@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import * as actions from '../../store/actions/index';
 import axios from 'axios';
 import errorHandler from '../../hoc/withErrorHandler/withErrorHandler';
+import Loader from '../../components/UI/Loader/Loader';
 
 class Table extends Component {
 
@@ -14,34 +15,23 @@ class Table extends Component {
 
     render() {
         console.log(this.props.tableData)
+        console.log(this.props.loader)
+       
+        let table;
+        if(this.props.loader){
+            table = <Loader/>
+        }else{
+            table = this.props.tableData.map( item => {
+                return <div key={item.id}>{item.id}</div>
+            })
+        }
+
+        
+        
         return (
-            <table className={classes.Table}> 
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Repo Title</th>
-                        <th>Owner</th>
-                        <th>Stars</th>
-                        <th>Created at</th>
-                    </tr>
-                </thead>  
-                <tbody>
-                    <tr>
-                    <td>1111</td>
-                    <td>$100</td>
-                    <td>1111</td>
-                    <td>$100</td>
-                    <td>$100</td>
-                    </tr>
-                    <tr>
-                        <td>11111</td>
-                        <td>$80</td>
-                        <td>1111</td>
-                        <td>$100</td>
-                        <td>$100</td>
-                    </tr>
-                </tbody>
-            </table>
+           <div>
+               {table}
+           </div>
         );
     }
 }

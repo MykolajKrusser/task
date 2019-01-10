@@ -22,7 +22,7 @@ class Table extends Component {
             table = <Loader/>
         }else{
             let tr = this.props.tableData.map( repo => {
-                return <tr>
+                return <tr key={repo.id}>
                             <td>{repo.id}</td>
                             <td>{repo.name}</td>
                             <td>{repo.owner.login}</td>
@@ -61,7 +61,7 @@ const mapStateToProps = state =>{
 };
 const mapDispatchToProps = dispatch =>{
     return{
-        onInitTableData: ()=> dispatch(actions.initTableData()),
+        onInitTableData: ()=> dispatch(actions.initTableData())
     };
 };
 

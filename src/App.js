@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import * as actions from './store/actions/actionTypes';
 
 import Wrap from './hoc/Wrap/Wrap';
 import Header from './components/Header/Header';
@@ -8,6 +10,8 @@ import Table from './container/Table/Table';
 
 class App extends Component {
   render() {
+
+    console.log(this.props.value)
     return (
       <Wrap>
         <Header/>
@@ -27,4 +31,16 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state =>{
+  return {
+    value: state.tableData.searchedWord
+  };
+};
+
+const mapDispatchToProps = dispatch =>{
+  return{
+    onChangeSearchHandler:  (event)=> dispatch({type: actions.SET_SEARCHED_WORD, event: event})
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

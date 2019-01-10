@@ -16,7 +16,7 @@ export const fetchRepoFailed = ()=>{
 
 export const initTableData = ()=>{
     return dispatch=>{
-        axios.get('https://api.github.com/search/repositories?q=react')
+        axios.get('https://api.github.com/search/repositories?q=rea')
         .then(respons=>{
             dispatch(setTableData(respons.data.items))
         })

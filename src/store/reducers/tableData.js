@@ -3,7 +3,8 @@ import * as actionsType from '../actions/actionTypes';
 const initialState = {
     tableData: null,
     loader: true,
-    error:false
+    error:false,
+    searchedWord: ''
 }
 
 const reducer = (state=initialState, action)=>{
@@ -20,6 +21,12 @@ const reducer = (state=initialState, action)=>{
                 ...state,
                 error: true
             };
+        case actionsType.SET_SEARCHED_WORD:
+            const updatedSearchWord = action.event.target.value;
+            return{
+                ...state,
+                searchedWord: updatedSearchWord
+            }
         default :
             return state;
     }

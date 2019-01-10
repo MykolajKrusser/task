@@ -1,4 +1,14 @@
 .Header{
     height: 80px;
     width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #24292E;
+    color: white;
+}
+.Header div{
+    width: 200px;
+    text-align: center;
+    padding: 25px 0 0 0;
 }

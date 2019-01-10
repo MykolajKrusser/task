@@ -1,14 +1,20 @@
 import React from 'react';
 import classes from './Input.css';
 
+import Wrap from '../../../hoc/Wrap/Wrap';
+
 const input = (props)=>(
-    <input 
-        className={classes.Input} 
-        type={props.type} 
-        value={props.value} 
-        onChange={props.onChange}
-        placeholder={props.placeholder}
-    />
+    <Wrap>
+        <label className={classes.Label} for={props.id}>{props.labelText}</label>
+        <input
+            id={props.id}
+            className={classes.Input} 
+            type={props.type} 
+            value={props.value} 
+            onChange={props.onChange}
+            placeholder={props.placeholder}
+        />
+    </Wrap>
 );
 
 export default input;

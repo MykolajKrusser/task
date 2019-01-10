@@ -1,0 +1,8 @@
+.Table{
+    margin: 50px;
+    border: 1px solid black;
+}
+
+.Table th, td {
+    border: 1px solid black;
+}

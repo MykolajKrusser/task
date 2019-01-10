@@ -5,7 +5,7 @@ import Wrap from '../../../hoc/Wrap/Wrap';
 
 const input = (props)=>(
     <Wrap>
-        <label className={classes.Label} for={props.id}>{props.labelText}</label>
+        <label className={classes.Label} htmlFor={props.id}>{props.labelText}</label>
         <input
             id={props.id}
             className={classes.Input} 

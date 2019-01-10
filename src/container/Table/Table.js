@@ -16,27 +16,31 @@ class Table extends Component {
         console.log(this.props.tableData)
         return (
             <table className={classes.Table}> 
-                <tr>
-                    <th>ID</th>
-                    <th>Repo Title</th>
-                    <th>Owner</th>
-                    <th>Stars</th>
-                    <th>Created at</th>
-                </tr>
-                <tr>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Repo Title</th>
+                        <th>Owner</th>
+                        <th>Stars</th>
+                        <th>Created at</th>
+                    </tr>
+                </thead>  
+                <tbody>
+                    <tr>
                     <td>1111</td>
                     <td>$100</td>
                     <td>1111</td>
                     <td>$100</td>
                     <td>$100</td>
-                </tr>
-                <tr>
-                    <td>11111</td>
-                    <td>$80</td>
-                    <td>1111</td>
-                    <td>$100</td>
-                    <td>$100</td>
-                </tr>
+                    </tr>
+                    <tr>
+                        <td>11111</td>
+                        <td>$80</td>
+                        <td>1111</td>
+                        <td>$100</td>
+                        <td>$100</td>
+                    </tr>
+                </tbody>
             </table>
         );
     }

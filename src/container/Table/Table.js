@@ -21,12 +21,29 @@ class Table extends Component {
         if(this.props.loader){
             table = <Loader/>
         }else{
-            table = this.props.tableData.map( item => {
-                return <div key={item.id}>{item.id}</div>
-            })
+            let tr = this.props.tableData.map( repo => {
+                return <tr>
+                            <td>{repo.id}</td>
+                            <td>{repo.name}</td>
+                            <td>{repo.owner.login}</td>
+                            <td>{repo.stargazers_count}</td>
+                            <td>{repo.created_at}</td>
+                        </tr>})
+            table = <table className={classes.Table}> 
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Repo Title</th>
+                                <th>Owner</th>
+                                <th>Stars</th>
+                                <th>Created at</th>
+                            </tr>
+                        </thead>  
+                        <tbody>
+                            {tr}
+                        </tbody>
+                    </table>
         }
-
-        
         
         return (
            <div>

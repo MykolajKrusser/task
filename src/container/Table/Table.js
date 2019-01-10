@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import classes from './Table.css'
 
+import {connect} from 'react-redux';
+import * as actions from '../../store/actions/index';
+import axios from 'axios';
+import errorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
 class Table extends Component {
   render() {
@@ -32,4 +36,15 @@ class Table extends Component {
   }
 }
 
-export default Table;
+const mapStateToProps = state =>{
+    return {
+        tableData: state.tableData.tableData
+    };
+};
+const mapDispatchToProps = dispatch =>{
+    return{
+       
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(errorHandler(Table, axios));

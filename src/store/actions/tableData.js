@@ -14,7 +14,7 @@ export const fetchRepoFailed = ()=>{
     }
 }
 
-export const initIngredients = ()=>{
+export const initTableData = ()=>{
     return dispatch=>{
         axios.get('https://api.github.com/search/repositories?q=react-native-fbads')
         .then(respons=>{

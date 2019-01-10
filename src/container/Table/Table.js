@@ -7,43 +7,50 @@ import axios from 'axios';
 import errorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
 class Table extends Component {
-  render() {
-    return (
-        <table className={classes.Table}> 
-            <tr>
-                <th>ID</th>
-                <th>Repo Title</th>
-                <th>Owner</th>
-                <th>Stars</th>
-                <th>Created at</th>
-            </tr>
-            <tr>
-                <td>1111</td>
-                <td>$100</td>
-                <td>1111</td>
-                <td>$100</td>
-                <td>$100</td>
-            </tr>
-            <tr>
-                <td>11111</td>
-                <td>$80</td>
-                <td>1111</td>
-                <td>$100</td>
-                <td>$100</td>
-            </tr>
-        </table>
-    );
-  }
+
+    componentDidMount(){
+        this.props.onInitTableData();
+    }
+
+    render() {
+        console.log(this.props.tableData)
+        return (
+            <table className={classes.Table}> 
+                <tr>
+                    <th>ID</th>
+                    <th>Repo Title</th>
+                    <th>Owner</th>
+                    <th>Stars</th>
+                    <th>Created at</th>
+                </tr>
+                <tr>
+                    <td>1111</td>
+                    <td>$100</td>
+                    <td>1111</td>
+                    <td>$100</td>
+                    <td>$100</td>
+                </tr>
+                <tr>
+                    <td>11111</td>
+                    <td>$80</td>
+                    <td>1111</td>
+                    <td>$100</td>
+                    <td>$100</td>
+                </tr>
+            </table>
+        );
+    }
 }
 
 const mapStateToProps = state =>{
     return {
-        tableData: state.tableData.tableData
+        tableData: state.tableData.tableData,
+        loader: state.tableData.loader
     };
 };
 const mapDispatchToProps = dispatch =>{
     return{
-       
+        onInitTableData: ()=> dispatch(actions.initTableData()),
     };
 };
 

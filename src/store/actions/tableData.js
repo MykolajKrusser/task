@@ -10,7 +10,7 @@ export const setTableData = (data)=>{
 
 export const fetchRepoFailed = ()=>{
     return {
-        type: actionTypes.FETCH_REPO_FAIL
+        type: actionTypes.FETCH_REPO_FAILED
     }
 }
 

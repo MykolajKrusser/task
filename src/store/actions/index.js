@@ -1,0 +1,1 @@
+export { initTableData } from './tableData';

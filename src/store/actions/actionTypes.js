@@ -7,3 +7,5 @@ export const SET_TABLE_DATA = 'SET_TABLE_DATA';
 export const SET_SEARCHED_WORD = 'SET_SEARCHED_WORD';
 
 export const SET_SHOW_ROWS = 'SET_SHOW_ROWS';
+
+export const SET_NEW_PAGE = 'SET_NEW_PAGE';

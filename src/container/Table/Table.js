@@ -18,13 +18,14 @@ class Table extends Component {
 
 
     render() {
-        console.log(this.props.showRows)
+        console.log(this.props.firstRow + " firstrow")
+        console.log(this.props.showRows + " showrow")
 
         let table;
         if(this.props.loader){
             table = <Loader/>
         }else{
-            let tr = this.props.tableData.slice(0, this.props.showRows).map( repo => {
+            let tr = this.props.tableData.slice(this.props.firstRow, this.props.showRows).map( repo => {
                 return <tr key={repo.id}>
                             <td>{repo.id}</td>
                             <td>{repo.name}</td>
@@ -55,11 +56,13 @@ class Table extends Component {
                     <Button onClick={this.props.onChangeRows} value="10" title='Rows'>10</Button>
                     <Button onClick={this.props.onChangeRows} value="15" title='Rows'>15</Button>
                     <Button onClick={this.props.onChangeRows} value="20" title='Rows'>20</Button>
+                    <Button onClick={this.props.onChangeRows} value="30" title='Rows'>25</Button>
                     <Button onClick={this.props.onChangeRows} value="30" title='Rows'>30</Button>
                </div>
                {table}
                <ReactPaginate
-                    pageCount={this.props.pageCount}/>
+                    pageCount={this.props.pageCount}
+                    onPageChange={this.props.onChangePage}/>
            </div>
         );
     }
@@ -71,13 +74,16 @@ const mapStateToProps = state =>{
         loader: state.tableData.loader,
         searchedWord: state.tableData.searchedWord,
         pageCount: state.tableData.pageCount,
-        showRows: state.tableData.showRows
+        showRows: state.tableData.showRows,
+        firstRow: state.tableData.firstRow,
+        pageIndex: state.tableData.pageIndex
     };
 };
 const mapDispatchToProps = dispatch =>{
     return{
-        onInitTableData: ()=> dispatch(actions.initTableData()),
-        onChangeRows: (event)=> dispatch({type: actionTypes.SET_SHOW_ROWS, event: event})
+        onInitTableData: (searchedWord)=> dispatch(actions.initTableData()),
+        onChangeRows: (event)=> dispatch({type: actionTypes.SET_SHOW_ROWS, event: event}),
+        onChangePage: (event)=> dispatch({type: actionTypes.SET_NEW_PAGE, event: event}),
     };
 };
 

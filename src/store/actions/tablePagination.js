@@ -6,3 +6,10 @@ export const onChangeRows = (event)=>{
         event: event
     }
 }
+
+export const onChangePage = (event)=>{
+    return {
+        type: actionTypes.SET_NEW_PAGE,
+        event: event
+    }
+}

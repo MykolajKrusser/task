@@ -10,10 +10,12 @@ import Input from './components/UI/Input/Input';
 import Table from './container/Table/Table';
 
 class App extends Component {
+
   searchHandler = (event)=>{
     this.props.onInitTableData(this.props.value);
     this.props.onChangeSearchHandler(event)
   }
+  
   render() {
     console.log(this.props.value)
     return (

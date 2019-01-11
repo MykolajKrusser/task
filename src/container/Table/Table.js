@@ -6,22 +6,33 @@ import * as actions from '../../store/actions/index';
 import axios from 'axios';
 import errorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import Loader from '../../components/UI/Loader/Loader';
+import Button from '../../components/UI/Button/Button';
 
 class Table extends Component {
+
+    state={
+        showRows: 6
+    }
 
     componentDidMount(){
         this.props.onInitTableData();
     }
 
+    onChangeRows = ()=>{
+        this.setState({showRows: 15})
+    }
+
     render() {
         console.log(this.props.tableData)
         console.log(this.props.loader)
+
+    
        
         let table;
         if(this.props.loader){
             table = <Loader/>
         }else{
-            let tr = this.props.tableData.map( repo => {
+            let tr = this.props.tableData.slice(0, this.state.showRows).map( repo => {
                 return <tr key={repo.id}>
                             <td>{repo.id}</td>
                             <td>{repo.name}</td>
@@ -47,6 +58,7 @@ class Table extends Component {
         
         return (
            <div>
+               <Button onClick={this.onChangeRows}>10</Button>
                {table}
            </div>
         );

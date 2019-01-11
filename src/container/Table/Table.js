@@ -7,8 +7,9 @@ import * as actionTypes from '../../store/actions/actionTypes';
 import axios from 'axios';
 import errorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import Loader from '../../components/UI/Loader/Loader';
-import Button from '../../components/UI/Button/Button';
-import ReactPaginate from 'react-paginate';
+
+import ReactTable from "react-table";
+import "react-table/react-table.css";
 
 class Table extends Component {
 
@@ -18,51 +19,64 @@ class Table extends Component {
 
 
     render() {
-        console.log(this.props.firstRow + " firstrow")
-        console.log(this.props.showRows + " showrow")
+        console.log(this.props.tableData)
 
         let table;
         if(this.props.loader){
             table = <Loader/>
         }else{
-            let tr = this.props.tableData.slice(this.props.firstRow, this.props.showRows).map( repo => {
-                return <tr key={repo.id}>
-                            <td>{repo.id}</td>
-                            <td>{repo.name}</td>
-                            <td>{repo.owner.login}</td>
-                            <td>{repo.stargazers_count}</td>
-                            <td>{repo.created_at}</td>
-                        </tr>});
-            table = <table className={classes.Table}> 
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Repo Title</th>
-                                <th>Owner</th>
-                                <th>Stars</th>
-                                <th>Created at</th>
-                            </tr>
-                        </thead>  
-                        <tbody>
-                            {tr}
-                        </tbody>
-                    </table>;
+            return <ReactTable
+                        data={this.props.tableData}
+                        columns={[
+                            {
+                            Header: "ID",
+                            columns: [
+                                {
+                                accessor: "id"
+                                },
+                            ]
+                            },
+                            {
+                            Header: "Repo Title",
+                            columns: [
+                                {
+                                accessor: "name"
+                                }
+                            ]
+                            },
+                            {
+                            Header: 'Owner',
+                            columns: [
+                                {
+                                accessor: "owner.login"
+                                }
+                            ]
+                            },
+                            {
+                                Header: 'Stars',
+                                columns: [
+                                    {
+                                    accessor: "stargazers_count"
+                                    }
+                                ]
+                            },
+                            {
+                                Header: 'Created at',
+                                columns: [
+                                    {
+                                    accessor: "created_at"
+                                    }
+                                ]
+                            }
+                        ]}
+                        defaultPageSize={10}
+                        className="-striped -highlight"
+                        />
         }
         
         return (
            <div className={classes.TableWr}>
-               <div className={classes.TableButtons}>
-                    <Button onClick={this.props.onChangeRows} value="5" title='Rows'>5</Button>
-                    <Button onClick={this.props.onChangeRows} value="10" title='Rows'>10</Button>
-                    <Button onClick={this.props.onChangeRows} value="15" title='Rows'>15</Button>
-                    <Button onClick={this.props.onChangeRows} value="20" title='Rows'>20</Button>
-                    <Button onClick={this.props.onChangeRows} value="30" title='Rows'>25</Button>
-                    <Button onClick={this.props.onChangeRows} value="30" title='Rows'>30</Button>
-               </div>
                {table}
-               <ReactPaginate
-                    pageCount={this.props.pageCount}
-                    onPageChange={this.props.onChangePage}/>
            </div>
         );
     }
@@ -73,17 +87,11 @@ const mapStateToProps = state =>{
         tableData: state.tableData.tableData,
         loader: state.tableData.loader,
         searchedWord: state.tableData.searchedWord,
-        pageCount: state.tableData.pageCount,
-        showRows: state.tableData.showRows,
-        firstRow: state.tableData.firstRow,
-        pageIndex: state.tableData.pageIndex
     };
 };
 const mapDispatchToProps = dispatch =>{
     return{
-        onInitTableData: (searchedWord)=> dispatch(actions.initTableData()),
-        onChangeRows: (event)=> dispatch({type: actionTypes.SET_SHOW_ROWS, event: event}),
-        onChangePage: (event)=> dispatch({type: actionTypes.SET_NEW_PAGE, event: event}),
+        onInitTableData: (searchedWord)=> dispatch(actions.initTableData())
     };
 };
 

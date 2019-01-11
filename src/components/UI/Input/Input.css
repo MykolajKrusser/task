@@ -11,12 +11,11 @@
     color: black;
     width: 20vw;
 }
-
 .Input::placeholder{
     color: black;
 }
-.Input:hover{
-    transform: scale(1.1);
+.Input:hover {
+    outline: 1px solid #24292E;
     transition: all 0.3s ease;
 }
 

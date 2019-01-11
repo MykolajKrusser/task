@@ -63,7 +63,7 @@ const mapStateToProps = state =>{
 };
 const mapDispatchToProps = dispatch =>{
     return{
-        onInitTableData: ()=> dispatch(actions.initTableData())
+        onInitTableData: (searchedWord)=> dispatch(actions.initTableData())
     };
 };
 

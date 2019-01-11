@@ -22,7 +22,7 @@ const reducer = (state=initialState, action)=>{
                 error: true
             };
         case actionsType.SET_SEARCHED_WORD:
-            const updatedSearchWord = action.event.target.value;
+            const updatedSearchWord = action.event.target.value
             return{
                 ...state,
                 searchedWord: updatedSearchWord

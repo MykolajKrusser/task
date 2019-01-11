@@ -9,7 +9,7 @@ import errorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import Loader from '../../components/UI/Loader/Loader';
 
 import ReactTable from "react-table";
-import "react-table/react-table.css";
+import "./react-table.css";
 
 class Table extends Component {
 

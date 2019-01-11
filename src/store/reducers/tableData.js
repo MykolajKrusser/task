@@ -14,15 +14,6 @@ const initialState = {
 
 const reducer = (state=initialState, action)=>{
     switch(action.type){
-           
-        case actionsType.SET_SHOW_ROWS:
-            const newShowRows = action.event.target.value;
-            const newPageCount = state.tableDataLength / newShowRows;
-            return{
-                ...state,
-                showRows: newShowRows,
-                pageCount: newPageCount
-            };
         case actionsType.SET_TABLE_DATA:
             const pageCount = state.showRows
             return{

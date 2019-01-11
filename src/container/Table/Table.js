@@ -29,47 +29,47 @@ class Table extends Component {
                         data={this.props.tableData}
                         columns={[
                             {
-                            Header: "ID",
-                            columns: [
-                                {
-                                accessor: "id"
-                                },
-                            ]
-                            },
-                            {
-                            Header: "Repo Title",
-                            columns: [
-                                {
-                                accessor: "name"
-                                }
-                            ]
-                            },
-                            {
-                            Header: 'Owner',
-                            columns: [
-                                {
-                                accessor: "owner.login"
-                                }
-                            ]
-                            },
-                            {
-                                Header: 'Stars',
                                 columns: [
                                     {
-                                    accessor: "stargazers_count"
+                                        Header: "ID",
+                                        accessor: "id"
+                                    },
+                            ]
+                            },
+                            {
+                                columns: [
+                                    {
+                                        Header: "Repo Title",
+                                        accessor: "name"
+                                    }
+                            ]
+                            },
+                            {
+                                columns: [
+                                    {
+                                        Header: 'Owner',
+                                        accessor: "owner.login"
+                                    }
+                            ]
+                            },
+                            {
+                                columns: [
+                                    {
+                                        Header: 'Stars',
+                                        accessor: "stargazers_count"
                                     }
                                 ]
                             },
                             {
-                                Header: 'Created at',
                                 columns: [
                                     {
-                                    accessor: "created_at"
+                                        Header: 'Created at',
+                                        accessor: "created_at"
                                     }
                                 ]
                             }
                         ]}
-                        defaultPageSize={10}
+                        defaultPageSize={5}
                         className="-striped -highlight"
                         />
         }

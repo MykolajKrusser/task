@@ -9,6 +9,7 @@
     flex-direction: column;
     border: 1px solid rgba(0, 0, 0, 0.1);
     margin: 25px 0;
+    width: 90%;
 }
 
 :global .ReactTable * {
@@ -49,6 +50,9 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+:global .ReactTable .rt-thead:focus{
+    outline: none
 }
 
 :global .ReactTable .rt-thead.-headerGroups {

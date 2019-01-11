@@ -9,7 +9,7 @@
     background: #d6d7dd;
     transition: all 0.3s ease;
     color: black;
-    width: 20vw;
+    width: 30vw;
 }
 .Input::placeholder{
     color: black;
@@ -21,4 +21,10 @@
 
 .Label{
     margin: 25px 0 15px 0;
+}
+
+@media screen and (max-width: 1024px){
+    .Input{
+        width: 80vw;
+    }
 }

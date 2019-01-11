@@ -14,12 +14,16 @@ import "./react-table.css";
 class Table extends Component {
 
     componentDidMount(){
-        this.props.onInitTableData();
+        if(JSON.parse(localStorage.getItem("data"))){
+            this.props.onSetLocalTableData(JSON.parse(localStorage.getItem("data")))
+        }else{
+            this.props.onInitTableData();
+        }
     }
 
 
     render() {
-        console.log(this.props.tableData)
+        console.log(JSON.parse(localStorage.getItem("data")))
 
         let table;
         if(this.props.loader){
@@ -87,11 +91,13 @@ const mapStateToProps = state =>{
         tableData: state.tableData.tableData,
         loader: state.tableData.loader,
         searchedWord: state.tableData.searchedWord,
+        localTableData: state.tableData.localTableData
     };
 };
 const mapDispatchToProps = dispatch =>{
     return{
-        onInitTableData: (searchedWord)=> dispatch(actions.initTableData())
+        onInitTableData: (searchedWord)=> dispatch(actions.initTableData()),
+        onSetLocalTableData: (data)=> dispatch({type: actionTypes.SET_LOCAL_TABLEDATA, data: data})
     };
 };
 

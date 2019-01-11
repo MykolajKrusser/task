@@ -8,6 +8,13 @@ export const setTableData = (data)=>{
     }
 }
 
+export const setLocalTableData = (data)=>{
+    return {
+        type: actionTypes.SET_LOCAL_TABLEDATA,
+        data: data
+    }
+}
+
 export const fetchRepoFailed = ()=>{
     return {
         type: actionTypes.FETCH_REPO_FAILED

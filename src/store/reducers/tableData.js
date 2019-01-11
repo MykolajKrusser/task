@@ -2,25 +2,27 @@ import * as actionsType from '../actions/actionTypes';
 
 const initialState = {
     tableData: null,
-    tableDataLength: null,
     loader: true,
     error:false,
-    searchedWord: '',
-    pageCount: null,
-    firstRow: 0,
-    showRows: 5,
-    pageIndex: null
+    searchedWord: ''
 }
 
 const reducer = (state=initialState, action)=>{
     switch(action.type){
-        case actionsType.SET_TABLE_DATA:
-            const pageCount = state.showRows
+        case actionsType.SET_LOCAL_TABLEDATA:
+            let localTableData = JSON.parse(localStorage.getItem("data"));
             return{
                 ...state,
-                tableData: action.data,
-                pageCount: action.data.length / pageCount,
-                tableDataLength: action.data.length,
+                tableData: localTableData,
+                loader: false,
+                error: false,
+            };
+        case actionsType.SET_TABLE_DATA:
+            let newData = action.data;
+            localStorage.setItem('data', JSON.stringify(newData));
+            return{
+                ...state,
+                tableData: newData,
                 loader: false,
                 error: false,
             };

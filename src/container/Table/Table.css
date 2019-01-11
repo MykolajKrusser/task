@@ -6,3 +6,11 @@
 .Table th, td {
     border: 1px solid black;
 }
+
+.TableButtons{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 15px auto;
+    justify-content: center;
+}

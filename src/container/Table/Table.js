@@ -58,7 +58,13 @@ class Table extends Component {
         
         return (
            <div>
-               <Button onClick={this.onChangeRows}>10</Button>
+               <div className={classes.TableButtons}>
+                    <Button onClick={this.onChangeRows}>5</Button>
+                    <Button onClick={this.onChangeRows}>10</Button>
+                    <Button onClick={this.onChangeRows}>15</Button>
+                    <Button onClick={this.onChangeRows}>20</Button>
+                    <Button onClick={this.onChangeRows}>30</Button>
+               </div>
                {table}
            </div>
         );

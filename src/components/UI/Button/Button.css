@@ -30,7 +30,8 @@
     transition: all 0.2s ease-in-out;
     position: relative;
     overflow: hidden;
-    outline: none
+    outline: none;
+    margin: 5px;
   }
   .Button:before {
     content: "";

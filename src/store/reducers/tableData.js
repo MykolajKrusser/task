@@ -4,15 +4,25 @@ const initialState = {
     tableData: null,
     loader: true,
     error:false,
-    searchedWord: ''
+    searchedWord: '',
+    pageCount: null,
+    showRows: 5,
 }
 
 const reducer = (state=initialState, action)=>{
     switch(action.type){
+        case actionsType.SET_SHOW_ROWS:
+            const newShowRows = action.event.target.value
+            return{
+                ...state,
+                showRows: newShowRows
+            };
         case actionsType.SET_TABLE_DATA:
+            const pageCount = state.showRows
             return{
                 ...state,
                 tableData: action.data,
+                pageCount: action.data.length / pageCount,
                 loader: false,
                 error: false,
             };

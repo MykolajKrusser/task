@@ -3,6 +3,7 @@ import classes from './Table.css'
 
 import {connect} from 'react-redux';
 import * as actions from '../../store/actions/index';
+import * as actionTypes from '../../store/actions/actionTypes';
 import axios from 'axios';
 import errorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import Loader from '../../components/UI/Loader/Loader';
@@ -11,27 +12,19 @@ import ReactPaginate from 'react-paginate';
 
 class Table extends Component {
 
-    state={
-        showRows: 5,
-    }
-
     componentDidMount(){
         this.props.onInitTableData();
     }
 
-    onChangeRows = (event)=>{
-        const rowsNumber = Number(event.target.value)
-        this.setState({showRows: rowsNumber})
-    }
 
     render() {
-        console.log()
+        console.log(this.props.pageCount)
 
         let table;
         if(this.props.loader){
             table = <Loader/>
         }else{
-            let tr = this.props.tableData.slice(0, this.state.showRows).map( repo => {
+            let tr = this.props.tableData.slice(0, this.props.showRows).map( repo => {
                 return <tr key={repo.id}>
                             <td>{repo.id}</td>
                             <td>{repo.name}</td>
@@ -58,14 +51,15 @@ class Table extends Component {
         return (
            <div className={classes.TableWr}>
                <div className={classes.TableButtons}>
-                    <Button onClick={this.onChangeRows} value="5" title='Rows'>5</Button>
-                    <Button onClick={this.onChangeRows} value="10" title='Rows'>10</Button>
-                    <Button onClick={this.onChangeRows} value="15" title='Rows'>15</Button>
-                    <Button onClick={this.onChangeRows} value="20" title='Rows'>20</Button>
-                    <Button onClick={this.onChangeRows} value="30" title='Rows'>30</Button>
+                    <Button onClick={this.props.onChangeRows} value="5" title='Rows'>5</Button>
+                    <Button onClick={this.props.onChangeRows} value="10" title='Rows'>10</Button>
+                    <Button onClick={this.props.onChangeRows} value="15" title='Rows'>15</Button>
+                    <Button onClick={this.props.onChangeRows} value="20" title='Rows'>20</Button>
+                    <Button onClick={this.props.onChangeRows} value="30" title='Rows'>30</Button>
                </div>
                {table}
-               <ReactPaginate/>
+               <ReactPaginate
+                    pageCount={this.props.pageCount}/>
            </div>
         );
     }
@@ -75,12 +69,15 @@ const mapStateToProps = state =>{
     return {
         tableData: state.tableData.tableData,
         loader: state.tableData.loader,
-        searchedWord: state.tableData.searchedWord
+        searchedWord: state.tableData.searchedWord,
+        pageCount: state.tableData.pageCount,
+        showRows: state.tableData.showRows
     };
 };
 const mapDispatchToProps = dispatch =>{
     return{
-        onInitTableData: ()=> dispatch(actions.initTableData())
+        onInitTableData: ()=> dispatch(actions.initTableData()),
+        onChangeRows: (event)=> dispatch({type: actionTypes.SET_SHOW_ROWS, event: event})
     };
 };
 

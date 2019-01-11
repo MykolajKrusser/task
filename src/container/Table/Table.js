@@ -11,23 +11,23 @@ import Button from '../../components/UI/Button/Button';
 class Table extends Component {
 
     state={
-        showRows: 6
+        showRows: 5
     }
 
     componentDidMount(){
         this.props.onInitTableData();
     }
 
-    onChangeRows = ()=>{
-        this.setState({showRows: 15})
+    onChangeRows = (event)=>{
+        const rowsNumber = Number(event.target.value)
+        this.setState({showRows: rowsNumber})
     }
 
     render() {
+        
         console.log(this.props.tableData)
         console.log(this.props.loader)
 
-    
-       
         let table;
         if(this.props.loader){
             table = <Loader/>
@@ -59,11 +59,11 @@ class Table extends Component {
         return (
            <div>
                <div className={classes.TableButtons}>
-                    <Button onClick={this.onChangeRows}>5</Button>
-                    <Button onClick={this.onChangeRows}>10</Button>
-                    <Button onClick={this.onChangeRows}>15</Button>
-                    <Button onClick={this.onChangeRows}>20</Button>
-                    <Button onClick={this.onChangeRows}>30</Button>
+                    <Button onClick={this.onChangeRows} value="5">5</Button>
+                    <Button onClick={this.onChangeRows} value="10">10</Button>
+                    <Button onClick={this.onChangeRows} value="15">15</Button>
+                    <Button onClick={this.onChangeRows} value="20">20</Button>
+                    <Button onClick={this.onChangeRows} value="30">30</Button>
                </div>
                {table}
            </div>

@@ -14,3 +14,15 @@
     margin: 15px auto;
     justify-content: center;
 }
+
+.TableWr ul{
+   list-style: none;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   margin: 15px auto;
+   padding-inline-start: 0;
+}
+.TableWr ul li{
+    margin: 0 10px;
+}

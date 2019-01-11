@@ -7,11 +7,12 @@ import axios from 'axios';
 import errorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import Loader from '../../components/UI/Loader/Loader';
 import Button from '../../components/UI/Button/Button';
+import ReactPaginate from 'react-paginate';
 
 class Table extends Component {
 
     state={
-        showRows: 5
+        showRows: 5,
     }
 
     componentDidMount(){
@@ -24,9 +25,7 @@ class Table extends Component {
     }
 
     render() {
-        
-        console.log(this.props.tableData)
-        console.log(this.props.loader)
+        console.log()
 
         let table;
         if(this.props.loader){
@@ -39,7 +38,7 @@ class Table extends Component {
                             <td>{repo.owner.login}</td>
                             <td>{repo.stargazers_count}</td>
                             <td>{repo.created_at}</td>
-                        </tr>})
+                        </tr>});
             table = <table className={classes.Table}> 
                         <thead>
                             <tr>
@@ -53,19 +52,20 @@ class Table extends Component {
                         <tbody>
                             {tr}
                         </tbody>
-                    </table>
+                    </table>;
         }
         
         return (
-           <div>
+           <div className={classes.TableWr}>
                <div className={classes.TableButtons}>
-                    <Button onClick={this.onChangeRows} value="5">5</Button>
-                    <Button onClick={this.onChangeRows} value="10">10</Button>
-                    <Button onClick={this.onChangeRows} value="15">15</Button>
-                    <Button onClick={this.onChangeRows} value="20">20</Button>
-                    <Button onClick={this.onChangeRows} value="30">30</Button>
+                    <Button onClick={this.onChangeRows} value="5" title='Rows'>5</Button>
+                    <Button onClick={this.onChangeRows} value="10" title='Rows'>10</Button>
+                    <Button onClick={this.onChangeRows} value="15" title='Rows'>15</Button>
+                    <Button onClick={this.onChangeRows} value="20" title='Rows'>20</Button>
+                    <Button onClick={this.onChangeRows} value="30" title='Rows'>30</Button>
                </div>
                {table}
+               <ReactPaginate/>
            </div>
         );
     }
@@ -76,12 +76,11 @@ const mapStateToProps = state =>{
         tableData: state.tableData.tableData,
         loader: state.tableData.loader,
         searchedWord: state.tableData.searchedWord
-
     };
 };
 const mapDispatchToProps = dispatch =>{
     return{
-        onInitTableData: (searchedWord)=> dispatch(actions.initTableData())
+        onInitTableData: ()=> dispatch(actions.initTableData())
     };
 };
 

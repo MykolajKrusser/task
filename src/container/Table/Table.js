@@ -18,7 +18,7 @@ class Table extends Component {
 
 
     render() {
-        console.log(this.props.pageCount)
+        console.log(this.props.showRows)
 
         let table;
         if(this.props.loader){

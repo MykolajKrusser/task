@@ -12,6 +12,9 @@ import ReactTable from "react-table";
 import "./react-table.css";
 
 class Table extends Component {
+    componentWillUpdate(nextProps, nextState){
+        return nextProps.updataComp
+    }
 
     componentDidMount(){
         if(JSON.parse(localStorage.getItem("data"))){
@@ -23,7 +26,7 @@ class Table extends Component {
 
 
     render() {
-        console.log(JSON.parse(localStorage.getItem("data")))
+        console.log(this.props.updataComp)
 
         let table;
         if(this.props.loader){
@@ -106,7 +109,8 @@ const mapStateToProps = state =>{
         tableData: state.tableData.tableData,
         loader: state.tableData.loader,
         searchedWord: state.tableData.searchedWord,
-        localTableData: state.tableData.localTableData
+        localTableData: state.tableData.localTableData,
+        updataComp: state.tableData.updataComp
     };
 };
 const mapDispatchToProps = dispatch =>{

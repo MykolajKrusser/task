@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import {connect} from 'react-redux';
+import * as actionTypes from '../../store/actions/actionTypes';
+
 import classes from "./Auth.css";
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
@@ -25,7 +28,7 @@ class App extends Component {
     firebase.auth().onAuthStateChanged(user => {
       this.setState({ isSignedIn: !!user })
       localStorage.setItem('userId', user.providerData[0].uid)
-      console.log("user", user.providerData[0].uid)
+      this.props.onUpdateTable();
     })
   }
 
@@ -40,11 +43,12 @@ class App extends Component {
               src={firebase.auth().currentUser.photoURL}
             />
             <Button onClick={() => {
-              localStorage.removeItem('userId')
+              localStorage.removeItem('userId');
+              this.props.onUpdateTable();
               return(
                 firebase.auth().signOut()
               );
-                }}>Sign out</Button>
+            }}>Sign out</Button>
           </span>
         ) : (
           <StyledFirebaseAuth
@@ -57,4 +61,10 @@ class App extends Component {
   }
 }
 
-export default App
+const mapDispatchToProps = dispatch =>{
+  return{
+      onUpdateTable : (event)=> dispatch({type: actionTypes.UPDATA_TABLE_COMP, event: event}),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(App);

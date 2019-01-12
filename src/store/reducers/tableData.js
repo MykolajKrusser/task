@@ -4,11 +4,23 @@ const initialState = {
     tableData: null,
     loader: true,
     error:false,
-    searchedWord: ''
+    searchedWord: '',
+    updataComp: false
 }
 
 const reducer = (state=initialState, action)=>{
     switch(action.type){
+        case actionsType.UPDATA_TABLE_COMP:
+            let updatedComp;
+            if(state.updataComp){
+                updatedComp = false
+            } else{
+                updatedComp = true
+            }
+            return{
+                ...state,
+                updataComp: updatedComp
+            };
         case actionsType.SET_LOCAL_TABLEDATA:
             let localTableData = JSON.parse(localStorage.getItem("data"));
             return{

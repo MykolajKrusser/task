@@ -37,12 +37,12 @@ class Table extends Component {
                             return pathArr.reduce((obj, key) =>
                                 (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj);
                             }
-                            const id = getNestedObject(rowInfo, ['original', 'owner', 'id'])
+                            const id = Number(getNestedObject(rowInfo, ['original', 'owner', 'id']))
 
                             console.log(id)
                             return {
                                 style: {
-                                    background: Number(id) === Number(localStorage.getItem('userId')) ? "rgba(95, 213, 245, 0.5)" : null
+                                    background: id === Number(localStorage.getItem('userId')) ? "rgba(95, 213, 245, 0.5)" : null
                                 }
                             };
                           }}

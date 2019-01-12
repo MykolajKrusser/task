@@ -39,7 +39,12 @@ class App extends Component {
               alt={firebase.auth().currentUser.displayName}
               src={firebase.auth().currentUser.photoURL}
             />
-            <Button onClick={() => firebase.auth().signOut()}>Sign out</Button>
+            <Button onClick={() => {
+              localStorage.removeItem('userId')
+              return(
+                firebase.auth().signOut()
+              );
+                }}>Sign out</Button>
           </span>
         ) : (
           <StyledFirebaseAuth

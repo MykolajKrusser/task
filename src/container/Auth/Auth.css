@@ -1,0 +1,40 @@
+.Auth{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.Auth span{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.Auth span div{
+  padding: 1.7em 0;
+}
+
+.Auth span img{
+  width: 64px;
+  height: 64px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  margin: 5px;;
+}
+
+:global #firebaseui_container .firebaseui-idp-list{
+  margin: 0;
+}
+:global #firebaseui_container .firebaseui-idp-button{
+  display: flex;
+  flex-direction: row;
+  height: 38px;
+  line-height: none;
+  margin-top: 15px;
+}
+:global #firebaseui_container .firebaseui-idp-button img{
+  margin: 0;
+  width: 20px;
+  height: 20px;
+}
+

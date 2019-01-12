@@ -23,7 +23,8 @@
     padding: .3em .3em;
     text-align: center;
     text-decoration: none;
-    color: #24292E;
+    color: rgb(255, 255, 255);
+    background: #24292E;
     border: 2px solid #24292E;
     font-size: 16px;
     display: inline-block;
@@ -31,7 +32,7 @@
     position: relative;
     overflow: hidden;
     outline: none;
-    margin: 5px;
+    margin: 10px;
   }
   .Button:before {
     content: "";

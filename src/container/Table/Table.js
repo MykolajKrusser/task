@@ -31,6 +31,14 @@ class Table extends Component {
         }else{
             return <ReactTable
                         data={this.props.tableData}
+                        getTrProps={(state, rowInfo, column) => {
+                            console.log(rowInfo)
+                            return {
+                                style: {
+                                    //background: rowInfo.row.id === 32726038 /* Its CAN BE DYNAMICAL */ ? "rgba(95, 213, 245, 0.5)" : null
+                                }
+                            };
+                          }}
                         columns={[
                             {
                                 columns: [

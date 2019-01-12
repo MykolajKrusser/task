@@ -24,7 +24,8 @@ class App extends Component {
   componentDidMount = () => {
     firebase.auth().onAuthStateChanged(user => {
       this.setState({ isSignedIn: !!user })
-      console.log("user", user)
+      localStorage.setItem('userId', user.providerData[0].uid)
+      console.log("user", user.providerData[0].uid)
     })
   }
 

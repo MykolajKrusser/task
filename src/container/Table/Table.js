@@ -32,10 +32,17 @@ class Table extends Component {
             return <ReactTable
                         data={this.props.tableData}
                         getTrProps={(state, rowInfo, column) => {
-                            console.log(rowInfo)
+                            
+                            const getNestedObject = (nestedObj, pathArr) => {
+                            return pathArr.reduce((obj, key) =>
+                                (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj);
+                            }
+                            const id = getNestedObject(rowInfo, ['original', 'owner', 'id'])
+
+                            console.log(id)
                             return {
                                 style: {
-                                    //background: rowInfo.row.id === 32726038 /* Its CAN BE DYNAMICAL */ ? "rgba(95, 213, 245, 0.5)" : null
+                                    background: Number(id) === Number(localStorage.getItem('userId')) ? "rgba(95, 213, 245, 0.5)" : null
                                 }
                             };
                           }}

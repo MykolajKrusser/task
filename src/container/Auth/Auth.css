@@ -1,3 +1,13 @@
+@keyframes sheen {
+  0% {
+    -webkit-transform: skewY(-45deg) translateX(0);
+            transform: skewY(-45deg) translateX(0);
+  }
+  100% {
+    -webkit-transform: skewY(-45deg) translateX(22.5em);
+            transform: skewY(-45deg) translateX(22.5em);
+  }
+}
 .Auth{
   display: flex;
   flex-direction: row;
@@ -21,6 +31,36 @@
   border-radius: 5px;
   margin: 5px;;
 }
+
+
+:global #firebaseui_container .firebaseui-idp-github{
+  background-color: #24292E;
+}
+:global #firebaseui_container .firebaseui-idp-github:before{
+  content: "";
+  background-color: rgba(97, 218, 251, 0.87);
+  height: 100%;
+  width: 3em;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -4.5em;
+  -webkit-transform: skewX(-45deg) translateX(0);
+          transform: skewX(-45deg) translateX(0);
+  transition: none;
+}
+:global #firebaseui_container .firebaseui-idp-github:hover{
+    background-color: #24292E;
+    color: #fff;
+    border-bottom: 2px solid #24292E;
+}
+:global #firebaseui_container .firebaseui-idp-github:hover:before {
+  -webkit-transform: skewX(-45deg) translateX(22.5em);
+          transform: skewX(-45deg) translateX(22.5em);
+  transition: all 0.5s ease-in-out;
+}
+
+
 
 :global #firebaseui_container .firebaseui-idp-list{
   margin: 0;

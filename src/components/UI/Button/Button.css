@@ -1,26 +1,16 @@
-@-webkit-keyframes sheen {
-    0% {
-      -webkit-transform: skewY(-45deg) translateX(0);
-              transform: skewY(-45deg) translateX(0);
-    }
-    100% {
-      -webkit-transform: skewY(-45deg) translateX(12.5em);
-              transform: skewY(-45deg) translateX(12.5em);
-    }
-  }
+
   @keyframes sheen {
     0% {
-      -webkit-transform: skewY(-45deg) translateX(0);
-              transform: skewY(-45deg) translateX(0);
+      -webkit-transform: skewY(-45deg) translateX(-1em);
+              transform: skewY(-45deg) translateX(-1em);
     }
     100% {
-      -webkit-transform: skewY(-45deg) translateX(12.5em);
-              transform: skewY(-45deg) translateX(12.5em);
+      -webkit-transform: skewY(-45deg) translateX(13.5em);
+              transform: skewY(-45deg) translateX(13.5em);
     }
   }
   
   .Button {
-    padding: .3em .3em;
     text-align: center;
     text-decoration: none;
     color: rgb(255, 255, 255);
@@ -31,7 +21,7 @@
     position: relative;
     overflow: hidden;
     outline: none;
-    margin: 10px;
+    margin: 15px;
   }
   .Button:before {
     content: "";
@@ -52,7 +42,6 @@
     border-bottom: 2px solid #24292E;
   }
   .Button:hover:before {
-    -webkit-transform: skewX(-45deg) translateX(13.5em);
-            transform: skewX(-45deg) translateX(13.5em);
+    transform: skewX(-45deg) translateX(13.5em);
     transition: all 0.5s ease-in-out;
   }

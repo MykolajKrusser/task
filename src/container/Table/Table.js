@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import classes from './Table.css'
+import classes from './Table.css';
 
 import {connect} from 'react-redux';
 import * as actions from '../../store/actions/index';
@@ -26,8 +26,6 @@ class Table extends Component {
 
 
     render() {
-        console.log(this.props.updataComp)
-
         let table;
         if(this.props.loader){
             table = <Loader/>

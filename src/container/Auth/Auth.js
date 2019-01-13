@@ -13,7 +13,9 @@ firebase.initializeApp({
 })
 
 class App extends Component {
-  state = { isSignedIn: false }
+  state = { 
+    isSignedIn: false 
+  }
   uiConfig = {
     signInFlow: "popup",
     signInOptions: [

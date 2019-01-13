@@ -40,7 +40,6 @@ class Table extends Component {
                             }
                             const id = Number(getNestedObject(rowInfo, ['original', 'owner', 'id']))
 
-                            console.log(id)
                             return {
                                 style: {
                                     background: id === Number(localStorage.getItem('userId')) ? "rgba(95, 213, 245, 0.5)" : null

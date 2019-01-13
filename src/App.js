@@ -12,12 +12,11 @@ import Table from './container/Table/Table';
 class App extends Component {
 
   searchHandler = (event)=>{
-    this.props.onInitTableData(this.props.value);
-    this.props.onChangeSearchHandler(event)
+    this.props.onChangeSearchHandler(event);
+    this.props.onInitTableData(this.props.searchedWord);
   }
   
   render() {
-    console.log(this.props.value)
     return (
       <Wrap>
         <Header/>
@@ -39,7 +38,7 @@ class App extends Component {
 
 const mapStateToProps = state =>{
   return {
-    value: state.tableData.searchedWord
+    searchedWord: state.tableData.searchedWord
   };
 };
 

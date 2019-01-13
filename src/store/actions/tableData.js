@@ -22,6 +22,7 @@ export const fetchRepoFailed = ()=>{
 }
 
 export const initTableData = (searchedWord)=>{
+    console.log('Ясработал')
     return dispatch=>{
         axios.get('https://api.github.com/search/repositories?q=' + searchedWord)
         .then(respons=>{

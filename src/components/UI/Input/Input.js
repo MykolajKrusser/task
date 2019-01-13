@@ -14,8 +14,8 @@ const input = (props)=>(
             value={props.value} 
             onChange={props.onChange}
             placeholder={props.placeholder}
-            minLength={0}
-            debounceTimeout={2000}
+            minLength={1}
+            debounceTimeout={1000}
         />
     </Wrap>
 );
